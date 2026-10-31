@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MenuMeters for macOS: CPU, memory, disk and network meters in the menu bar</title>
+<meta name="description" content="MenuMeters puts CPU, memory, disk and network meters in the macOS menu bar. Free and open source since 2002, rewritten in Swift, signed and notarized, and maintained.">
+<link rel="canonical" href="https://menumeters-osx.github.io/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121417" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MenuMeters, maintained">
+<meta property="og:description" content="CPU, memory, disk and network meters for the macOS menu bar. Free and open source since 2002, signed and notarized, with one home and a maintainer.">
+<meta property="og:url" content="https://menumeters-osx.github.io/">
+<meta property="og:image" content="https://menumeters-osx.github.io/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/archivo-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MenuMeters",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "macOS 26 or later",
+  "softwareVersion": "3.1.0",
+  "downloadUrl": "https://github.com/menumeters-osx/MenuMeters/releases/latest/download/MenuMeters-latest.dmg",
+  "license": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": [
+    { "@type": "Person", "name": "Alex Harper" },
+    { "@type": "Person", "name": "Yuji Tachikawa" },
+    { "@type": "Person", "name": "Luca Gibelli" }
+  ]
+}
+</script>
+<script src="/assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="menubar">
+  <nav class="menubar-menus" aria-label="Site">
+    <a class="menubar-app" href="#top"><img src="/assets/img/icon-256.png" alt="" width="16" height="16">MenuMeters</a>
+    <a href="#download">Download</a>
+    <a href="#meters">Meters</a>
+    <a href="#history">History</a>
+    <a href="#promise">Promise</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://github.com/menumeters-osx/MenuMeters">GitHub</a>
+  </nav>
+  <div class="menubar-status" aria-hidden="true">
+    <picture><source srcset="/assets/img/meters/cpu-percent-thermo-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/cpu-percent-thermo-light.png" alt="" width="83" height="21"></picture>
+    <picture class="hide-narrow"><source srcset="/assets/img/meters/mem-pie-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/mem-pie-light.png" alt="" width="17" height="21"></picture>
+    <picture class="hide-narrow"><source srcset="/assets/img/meters/disk-set0-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/disk-set0-light.png" alt="" width="16" height="22"></picture>
+    <picture class="hide-narrow"><source srcset="/assets/img/meters/net-throughput-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/net-throughput-light.png" alt="" width="66" height="21"></picture>
+    <time class="menubar-clock" id="clock"></time>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <img class="hero-icon" src="/assets/img/icon-256.png" alt="" width="96" height="96">
+    <h1>MenuMeters, maintained.</h1>
+    <p class="lead">The CPU, memory, disk and network meters Mac users have kept in their menu bar since 2002. Rewritten in Swift, signed and notarized, and now with one home and a maintainer who answers.</p>
+    <div class="actions" id="download">
+      <a class="button" href="https://github.com/menumeters-osx/MenuMeters/releases/latest/download/MenuMeters-latest.dmg">Download MenuMeters 3.1.0</a>
+      <a class="button button-quiet" href="https://github.com/menumeters-osx/MenuMeters">Source on GitHub</a>
+    </div>
+    <p class="fineprint">Free. For macOS 26 Tahoe and later, on Apple silicon and Intel Macs. A 2.7&nbsp;MB disk image, signed by Stardata s.r.l. and notarized by Apple. Using an older macOS? <a href="#older-macos">Here’s what to get.</a></p>
+  </div>
+
+  <figure class="loupe">
+    <div class="loupe-bar">
+      <picture><source srcset="/assets/img/meters/cpu-percent-graph-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/cpu-percent-graph-light.png" alt="CPU meter: temperature 69.9 °C, a load graph in blue and red, and 19%" width="105" height="21"></picture>
+      <picture><source srcset="/assets/img/meters/mem-pie-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/mem-pie-light.png" alt="Memory meter as a pie chart" width="17" height="21"></picture>
+      <picture><source srcset="/assets/img/meters/disk-set0-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/disk-set0-light.png" alt="Disk meter with read and write arrows" width="16" height="22"></picture>
+      <picture><source srcset="/assets/img/meters/net-all-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/net-all-light.png" alt="Network meter: traffic graph, arrows, 39.0 KB/s sent and 35.0 KB/s received" width="116" height="21"></picture>
+    </div>
+    <figcaption>Magnified. Every meter on this page was drawn by MenuMeters 3.1.0 on a real Mac.</figcaption>
+  </figure>
+</section>
+
+<section class="section meters" id="meters" aria-labelledby="meters-title">
+  <div class="wrap">
+    <h2 id="meters-title">Four meters. You choose how each one looks.</h2>
+    <p class="section-intro">Turn on the meters you want, then pick a style, colors and an update interval for each. They sit in the menu bar like any other status item, and Command-drag rearranges them.</p>
+
+    <div class="meter-grid">
+      <article class="meter">
+        <h3>CPU</h3>
+        <p>Load averaged across the processor or shown for every core, as a graph, a percentage or a bar. Temperature comes from the Apple silicon or Intel sensors. The menu lists the busiest processes, system ones included, and stays live while it’s open.</p>
+        <ul class="variants">
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/cpu-graph-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/cpu-graph-light.png" alt="" width="71" height="21"></picture></span>Graph</li>
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/cpu-percent-thermo-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/cpu-percent-thermo-light.png" alt="" width="83" height="21"></picture></span>Percentage and bar</li>
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/cpu-cores-thermo-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/cpu-cores-thermo-light.png" alt="" width="161" height="21"></picture></span>Every core</li>
+        </ul>
+      </article>
+
+      <article class="meter">
+        <h3>Memory</h3>
+        <p>Used and free memory as a pie, a bar, a graph or plain numbers. The menu adds memory pressure, compression, paging and swap, so you can tell a busy Mac from one that’s running out of room.</p>
+        <ul class="variants">
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/mem-pie-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/mem-pie-light.png" alt="" width="17" height="21"></picture></span>Pie</li>
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/mem-bar-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/mem-bar-light.png" alt="" width="11" height="21"></picture></span>Bar</li>
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/mem-graph-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/mem-graph-light.png" alt="" width="33" height="21"></picture></span>Graph</li>
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/mem-number-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/mem-number-light.png" alt="" width="60" height="21"></picture></span>Numbers</li>
+        </ul>
+      </article>
+
+      <article class="meter">
+        <h3>Disk</h3>
+        <p>Read and write activity in six icon styles. The menu shows the free space on every mounted volume; choose one to open it in Finder, or hold Option to eject it.</p>
+        <ul class="variants">
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/disk-set0-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/disk-set0-light.png" alt="" width="16" height="22"></picture></span>Color arrows</li>
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/disk-set1-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/disk-set1-light.png" alt="" width="16" height="22"></picture></span>Arrows</li>
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/disk-set3-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/disk-set3-light.png" alt="" width="16" height="22"></picture></span>Lights</li>
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/disk-set5-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/disk-set5-light.png" alt="" width="16" height="22"></picture></span>Disk arrows</li>
+        </ul>
+      </article>
+
+      <article class="meter">
+        <h3>Network</h3>
+        <p>Traffic on your main connection, or one you pick, as arrows, numbers or a graph. The menu lists every interface with its addresses, link speed and totals, and connects VPN and PPP services.</p>
+        <ul class="variants">
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/net-arrows-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/net-arrows-light.png" alt="" width="13" height="21"></picture></span>Arrows</li>
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/net-throughput-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/net-throughput-light.png" alt="" width="66" height="21"></picture></span>Throughput</li>
+          <li><span class="chip"><picture><source srcset="/assets/img/meters/net-throughput-graph-dark.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/meters/net-throughput-graph-light.png" alt="" width="101" height="21"></picture></span>Graph and throughput</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section showcase" aria-labelledby="showcase-title">
+  <div class="wrap showcase-grid">
+    <div class="showcase-text">
+      <h2 id="showcase-title">Click a meter for the details.</h2>
+      <p>Each meter opens a menu with the numbers behind it: the processes using the CPU, the space left on every disk, what memory is doing, and the state of every network interface. A link at the bottom of each menu opens Activity Monitor.</p>
+      <p>Preferences sit one click away, with a tab for every meter.</p>
+    </div>
+    <figure class="shot shot-cpu">
+      <img src="/assets/img/shots/menu-cpu.png" alt="The CPU menu: processor, uptime, tasks and threads, load average, and the five busiest processes" width="292" height="513" loading="lazy">
+      <figcaption>The CPU menu</figcaption>
+    </figure>
+    <figure class="shot shot-disk">
+      <img src="/assets/img/shots/menu-disk.png" alt="The disk menu: three volumes with their used, free and total space" width="416" height="252" loading="lazy">
+      <figcaption>The disk menu. Two volume names are blurred.</figcaption>
+    </figure>
+    <figure class="shot shot-prefs">
+      <img src="/assets/img/shots/prefs-cpu-dark.png" alt="The CPU tab of the MenuMeters preferences" width="594" height="761" loading="lazy">
+      <figcaption>Preferences</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section history" id="history" aria-labelledby="history-title">
+  <div class="wrap">
+    <h2 id="history-title">Twenty-four years in the menu bar</h2>
+    <p class="section-intro">MenuMeters is older than most of the Macs it runs on. It has had three homes and been rewritten twice, and it has survived because people kept caring about it.</p>
+
+    <ol class="timeline">
+      <li>
+        <p class="when"><time datetime="2002">2002</time></p>
+        <div class="what">
+          <h3>Alex Harper writes MenuMeters</h3>
+          <p>At Raging Menace, for Mac OS X Jaguar. The meters are menu extras, small plug-ins that run inside the system’s own menu bar process, set up from a pane in System Preferences. It&rsquo;s free, its source is open under the GPL, and it finds its way into a great many menu bars.</p>
+        </div>
+      </li>
+      <li>
+        <p class="when"><time datetime="2014-10-23">2014</time></p>
+        <div class="what">
+          <h3>The last Raging Menace release</h3>
+          <p>Version 1.8.1 arrives in October 2014, for OS X Yosemite.</p>
+        </div>
+      </li>
+      <li>
+        <p class="when"><time datetime="2015-07-31">2015</time></p>
+        <div class="what">
+          <h3>El Capitan shuts menu extras out, and Yuji Tachikawa steps in</h3>
+          <p>OS X El Capitan stops loading third-party menu extras, and MenuMeters stops working. Before El Capitan has even shipped, Yuji Tachikawa publishes a version that runs as an ordinary app with status items. For the next decade, that fork is MenuMeters.</p>
+        </div>
+      </li>
+      <li>
+        <p class="when"><time datetime="2019">2019</time></p>
+        <div class="what">
+          <h3>A standalone app</h3>
+          <p>With macOS Catalina, MenuMeters 2.0 leaves System Preferences behind and becomes a signed, notarized app of its own.</p>
+        </div>
+      </li>
+      <li>
+        <p class="when"><time datetime="2020-11">2020</time></p>
+        <div class="what">
+          <h3>Apple silicon</h3>
+          <p>Big Sur’s new look and the first M1 Macs arrive in the same autumn. MenuMeters ships as a universal app.</p>
+        </div>
+      </li>
+      <li>
+        <p class="when"><time datetime="2021-11">2021</time></p>
+        <div class="what">
+          <h3>2.1.6.1, then a long pause</h3>
+          <p>The last regular release for almost five years. In the meantime the project gathers more than 240 forks and more than 100 open issues. Fixes for each new macOS are spread across those forks, and some pull requests have waited since 2021. Version 2.1.7 follows in October 2026, with a community fix for a crash on macOS 27.</p>
+        </div>
+      </li>
+      <li>
+        <p class="when"><time datetime="2026-10-28">2026</time></p>
+        <div class="what">
+          <h3>gonejack rewrites it in Swift</h3>
+          <p>Twenty-four years of Objective-C, nib files and compatibility layers become a single Swift app for macOS 26, with its interface built in code.</p>
+        </div>
+      </li>
+      <li>
+        <p class="when"><time datetime="2026-10-30" aria-label="30 October 2026"></time></p>
+        <div class="what">
+          <h3>3.1.0: audited, fixed, signed</h3>
+          <p>Before shipping a line of it, I audited the rewrite for backdoors and hidden network access. There were none, but there were bugs: the CPU meter read close to 100% all the time, Intel temperatures never appeared, and the network and disk menus could freeze or show stale numbers. Version 3.1.0 fixes them, restores the license notices and credits, and adds signed automatic updates.</p>
+        </div>
+      </li>
+      <li class="now">
+        <p class="when"><time datetime="2026-10-31">Today</time></p>
+        <div class="what">
+          <h3>One home</h3>
+          <p>MenuMeters now lives at <a href="https://github.com/menumeters-osx/MenuMeters">github.com/menumeters-osx</a> and here, with issues open and a maintainer reading them.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section letter" aria-labelledby="letter-title">
+  <div class="wrap">
+    <div class="letter-body">
+      <h2 id="letter-title">Why I took this on</h2>
+      <p>Like a lot of people, I kept MenuMeters running by hopping from fork to fork. A new macOS would come out, something would break, and the search would start again. Which fork builds? Which one has the patch for this release? Is the disk image on that page signed by anyone at all? The fixes were out there, but scattered across hundreds of repositories, in pull requests that waited for years.</p>
+      <p>None of that is anyone’s fault, and I want to be clear about it. Alex Harper wrote MenuMeters and gave it away. Yuji Tachikawa kept it alive for more than a decade, in their own free time, for nothing. gonejack rewrote the whole thing in Swift. Dozens of people sent patches. I’m grateful to every one of them. Free time runs out, and nobody owes anyone a release.</p>
+      <p>Still, an app this many people rely on deserves better care than that. So I’m putting my time where my mouth is: MenuMeters now has one home, one download, signed updates, and a maintainer who has signed up for the job.</p>
+      <p class="signature"><a href="https://github.com/lgibelli">Luca Gibelli</a><br>Maintainer</p>
+    </div>
+  </div>
+</section>
+
+<section class="section promise" id="promise" aria-labelledby="promise-title">
+  <div class="wrap">
+    <h2 id="promise-title">What I promise</h2>
+    <dl class="promises">
+      <div>
+        <dt>Ready for every new macOS within a week</dt>
+        <dd>I test MenuMeters against each new macOS release. If it needs a fix, a signed and notarized update ships within seven days, and reaches you through the app’s own updater.</dd>
+      </div>
+      <div>
+        <dt>Free and open source, for good</dt>
+        <dd>MenuMeters stays under the GNU GPL, version 2. No price, no ads, no accounts, no analytics, and no paid edition, now or later.</dd>
+      </div>
+      <div>
+        <dt>Every issue gets an answer</dt>
+        <dd>Bug reports, questions and ideas on GitHub are read and answered, and fixes go out in signed releases rather than in a branch you’d have to build yourself.</dd>
+      </div>
+      <div>
+        <dt>One place to get it</dt>
+        <dd>This site and <a href="https://github.com/menumeters-osx/MenuMeters">github.com/menumeters-osx/MenuMeters</a> are the only official sources. Once it’s installed, updates come to you.</dd>
+      </div>
+    </dl>
+    <p class="promise-cta"><a class="button button-quiet" href="https://github.com/menumeters-osx/MenuMeters/issues/new">Report an issue</a></p>
+  </div>
+</section>
+
+<section class="section trust" id="trust" aria-labelledby="trust-title">
+  <div class="wrap trust-grid">
+    <div>
+      <h2 id="trust-title">What’s in the box, and what isn’t</h2>
+      <ul class="facts">
+        <li><strong>Signed and notarized.</strong> Every release is signed with the Developer ID of Stardata s.r.l. (team T4552AW4A5), runs with the hardened runtime, and is notarized by Apple.</li>
+        <li><strong>Signed updates.</strong> MenuMeters checks for updates once a day, using <a href="https://sparkle-project.org">Sparkle</a>, and asks before installing. It accepts an update only if the download is signed with the project’s update key and the app inside is signed by the same developer team.</li>
+        <li><strong>Nothing about you leaves your Mac.</strong> The daily check downloads a small feed from salamacchine.it and sends only the app’s version, as <code>MenuMeters/3.1.0 Sparkle/2.10.1</code>. You can turn the check off in the About tab.</li>
+        <li><strong>Open to inspection.</strong> All of the source is on GitHub, and the release build needs nothing but Apple’s Command Line Tools.</li>
+      </ul>
+    </div>
+    <div class="verify">
+      <h3>Check it yourself</h3>
+      <p>After installing, these commands show the signature and Apple’s notarization:</p>
+<pre><code>codesign --verify --deep --strict \
+    /Applications/MenuMeters.app
+spctl --assess --verbose \
+    /Applications/MenuMeters.app</code></pre>
+      <p>The first prints nothing when the signature is intact. The second should end with <code>source=Notarized Developer ID</code>. The SHA-256 of the 3.1.0 disk image is:</p>
+      <p class="hash"><code>12144f6dde627c84e48e841b1d74484a302064706895bb1fcee9b3d6396de63c</code></p>
+    </div>
+  </div>
+</section>
+
+<section class="section install" id="install" aria-labelledby="install-title">
+  <div class="wrap install-grid">
+    <div>
+      <h2 id="install-title">Install</h2>
+      <ol class="steps">
+        <li><span><a href="https://github.com/menumeters-osx/MenuMeters/releases/latest/download/MenuMeters-latest.dmg">Download the disk image</a> and open it.</span></li>
+        <li><span>Drag MenuMeters to the Applications folder.</span></li>
+        <li><span>Open MenuMeters. The meters appear in the menu bar, and a welcome page opens once. Each meter&rsquo;s menu has a link to the preferences.</span></li>
+      </ol>
+    </div>
+    <div class="install-notes">
+      <h3>Coming from an older MenuMeters?</h3>
+      <p>Your settings are copied over the first time 3.1.0 starts. Then delete the old copy: it has a different bundle identifier, so macOS treats it as a separate app with its own login item.</p>
+      <h3 id="older-macos">On macOS 15 or earlier</h3>
+      <p>This version needs macOS 26 Tahoe or later. For older systems, Yuji Tachikawa’s <a href="https://github.com/yujitach/MenuMeters/releases">2.1 releases</a> still work.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <h2 id="faq-title">Questions</h2>
+    <div class="faq-list">
+      <details>
+        <summary>Why isn’t MenuMeters on the Mac App Store?</summary>
+        <p>App Store apps have to run in Apple’s sandbox, and inside it MenuMeters can’t list other apps' processes, read the Intel temperature sensors or eject disks. Apple silicon temperatures come from an interface that App Review doesn’t allow, and the GPL doesn’t fit the App Store’s terms either. So MenuMeters is distributed the way it always has been: as a free download, now signed and notarized.</p>
+      </details>
+      <details>
+        <summary>Why does it need macOS 26?</summary>
+        <p>The Swift rewrite is built on current AppKit and tested on macOS 26 Tahoe and macOS 27. Keeping it focused on current systems is what makes the one-week promise possible. Older Macs can keep using the 2.1 releases.</p>
+      </details>
+      <details>
+        <summary>Why does it ask for Accessibility access?</summary>
+        <p>It asks only if you turn on “Opens specific panes” in the preferences. That option lets MenuMeters switch Activity Monitor to the tab that matches the meter you clicked. Leave it off and MenuMeters never asks.</p>
+      </details>
+      <details>
+        <summary>Does it start at login?</summary>
+        <p>On the first launch it adds itself to your login items, once. After that it’s your choice: the Startup checkbox in the About tab turns it on or off, and so does System Settings, under General, then Login Items.</p>
+      </details>
+      <details>
+        <summary>How is it different from Stats?</summary>
+        <p><a href="https://github.com/exelban/stats">Stats</a> is a great, actively maintained monitor that covers much more, from battery to fans. MenuMeters does less on purpose: four meters, the look many people have known for twenty years, and very little else. Pick the one that suits you.</p>
+      </details>
+      <details>
+        <summary>Can I build it myself?</summary>
+        <p>Yes. Clone the repository and run <code>./build-clt.sh</code>; Apple’s Command Line Tools are enough, and Xcode works too. The <a href="https://github.com/menumeters-osx/MenuMeters#build">README</a> has the details.</p>
+      </details>
+      <details>
+        <summary>I found a bug, or I have an idea.</summary>
+        <p>Please <a href="https://github.com/menumeters-osx/MenuMeters/issues/new">open an issue</a>. Include your Mac model and macOS version, and a screenshot if the problem is visible.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section credits" aria-labelledby="credits-title">
+  <div class="wrap">
+    <h2 id="credits-title">Thanks</h2>
+    <div class="credits-grid">
+      <p><strong>Alex Harper</strong> created MenuMeters at <a href="https://www.ragingmenace.com/software/menumeters/">Raging Menace</a> and maintained it from 2002 to 2014.</p>
+      <p><strong>Yuji Tachikawa</strong> brought it to El Capitan and <a href="https://github.com/yujitach/MenuMeters">kept it going</a> from 2015 to 2026.</p>
+      <p><strong>gonejack</strong> rewrote it in Swift in 2026.</p>
+    </div>
+    <p class="contributors">With code from Jeffrey Lim, Enrico M. Crisostomo, schriftgestalt, Stephen, Lauri Nurmi, Marc Schwede, Hofi, David Gilman, luckman212, Justin, Julian Geywitz, Emir Sarı, billatq, Alexander Graf, Roman Turchin, Nick Lamkins, Maxime Lardier, Max Beckman-Harned, Joel Edström, Jeremiah Morris, Fred Wenzel, Fred Stutzman, Damian Nowak, Bryan Ischo, Andrew Udvare and Andras Suller. Updates are delivered by <a href="https://sparkle-project.org">Sparkle</a>.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <p>MenuMeters is free software, released under the <a href="https://github.com/menumeters-osx/MenuMeters/blob/main/LICENSE">GNU General Public License, version 2</a>. Maintained by <a href="https://github.com/lgibelli">Luca Gibelli</a>.</p>
+    <p>Not affiliated with Apple. macOS is a trademark of Apple Inc.</p>
+    <nav class="footer-links" aria-label="Project">
+      <a href="https://github.com/menumeters-osx/MenuMeters">Source</a>
+      <a href="https://github.com/menumeters-osx/MenuMeters/releases">Releases</a>
+      <a href="https://github.com/menumeters-osx/MenuMeters/issues">Issues</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
