@@ -133,17 +133,15 @@ h1, h2, h3 {
 }
 
 h2 {
-  font-size: clamp(30px, 4.2vw, 46px);
-  font-stretch: 118%;
-  font-weight: 750;
-  line-height: 1.06;
+  font-size: clamp(28px, 3.4vw, 38px);
+  font-weight: 680;
+  line-height: 1.12;
   letter-spacing: -0.015em;
 }
 
 h3 {
   font-size: 22px;
-  font-stretch: 108%;
-  font-weight: 680;
+  font-weight: 640;
   line-height: 1.25;
 }
 
@@ -229,12 +227,11 @@ p { margin: 0 0 1em; }
 }
 
 .hero h1 {
-  font-size: clamp(46px, 8.4vw, 112px);
-  font-stretch: 125%;
-  font-weight: 820;
-  line-height: 0.94;
-  letter-spacing: -0.03em;
-  max-width: 11em;
+  font-size: clamp(40px, 6vw, 76px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  max-width: 12em;
 }
 
 .lead {
@@ -326,7 +323,7 @@ p { margin: 0 0 1em; }
   border-top: 1px solid var(--rule);
   padding-top: 28px;
 }
-.meter h3 { font-size: 28px; font-stretch: 120%; font-weight: 760; }
+.meter h3 { font-size: 26px; font-weight: 680; }
 .meter > p { margin: 12px 0 28px; color: var(--ink-2); max-width: 32em; }
 
 .variants {
@@ -426,9 +423,8 @@ p { margin: 0 0 1em; }
 .timeline .when {
   margin: 0;
   padding-top: 2px;
-  font-size: 26px;
-  font-stretch: 125%;
-  font-weight: 760;
+  font-size: 24px;
+  font-weight: 680;
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
   text-align: right;
@@ -497,14 +493,11 @@ p { margin: 0 0 1em; }
   line-height: 1.4;
   color: var(--ink-3);
 }
-.letter-body .signature a {
+.letter-body .signature strong {
   font-size: 22px;
-  font-weight: 680;
-  font-stretch: 110%;
+  font-weight: 650;
   color: var(--ink);
-  text-decoration: none;
 }
-.letter-body .signature a:hover { text-decoration: underline; }
 
 /* The promise */
 
@@ -518,9 +511,8 @@ p { margin: 0 0 1em; }
 
 .promises > div { border-top: 2px solid var(--ink); padding-top: 22px; }
 .promises dt {
-  font-size: clamp(22px, 2.4vw, 27px);
-  font-stretch: 115%;
-  font-weight: 740;
+  font-size: clamp(21px, 2.2vw, 25px);
+  font-weight: 660;
   line-height: 1.2;
   text-wrap: balance;
 }
@@ -615,9 +607,8 @@ pre code { font-size: inherit; }
 }
 .steps li::before {
   content: counter(step);
-  font-size: 30px;
-  font-stretch: 125%;
-  font-weight: 780;
+  font-size: 28px;
+  font-weight: 700;
   color: var(--blue);
   line-height: 1;
 }
@@ -643,8 +634,7 @@ pre code { font-size: inherit; }
   gap: 24px;
   padding: 22px 0;
   font-size: 20px;
-  font-stretch: 106%;
-  font-weight: 620;
+  font-weight: 580;
 }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after {
@@ -689,8 +679,7 @@ pre code { font-size: inherit; }
   margin-bottom: 4px;
   font-family: var(--sans);
   font-size: 22px;
-  font-stretch: 112%;
-  font-weight: 720;
+  font-weight: 650;
   color: var(--ink);
 }
 

@@ -33,7 +33,7 @@
   "author": [
     { "@type": "Person", "name": "Alex Harper" },
     { "@type": "Person", "name": "Yuji Tachikawa" },
-    { "@type": "Person", "name": "Luca Gibelli" }
+    { "@type": "Person", "name": "NERv" }
   ]
 }
 </script>
@@ -72,7 +72,7 @@
       <a class="button" href="https://github.com/menumeters-osx/MenuMeters/releases/latest/download/MenuMeters-latest.dmg">Download MenuMeters 3.1.0</a>
       <a class="button button-quiet" href="https://github.com/menumeters-osx/MenuMeters">Source on GitHub</a>
     </div>
-    <p class="fineprint">Free. For macOS 26 Tahoe and later, on Apple silicon and Intel Macs. A 2.7&nbsp;MB disk image, signed by Stardata s.r.l. and notarized by Apple. Using an older macOS? <a href="#older-macos">Here’s what to get.</a></p>
+    <p class="fineprint">Free. For macOS 26 Tahoe and later, on Apple silicon and Intel Macs. A 2.7&nbsp;MB disk image, signed with a Developer ID and notarized by Apple. Using an older macOS? <a href="#older-macos">Here’s what to get.</a></p>
   </div>
 
   <figure class="loupe">
@@ -239,7 +239,7 @@
       <p>Like a lot of people, I kept MenuMeters running by hopping from fork to fork. A new macOS would come out, something would break, and the search would start again. Which fork builds? Which one has the patch for this release? Is the disk image on that page signed by anyone at all? The fixes were out there, but scattered across hundreds of repositories, in pull requests that waited for years.</p>
       <p>None of that is anyone’s fault, and I want to be clear about it. Alex Harper wrote MenuMeters and gave it away. Yuji Tachikawa kept it alive for more than a decade, in their own free time, for nothing. gonejack rewrote the whole thing in Swift. Dozens of people sent patches. I’m grateful to every one of them. Free time runs out, and nobody owes anyone a release.</p>
       <p>Still, an app this many people rely on deserves better care than that. So I’m putting my time where my mouth is: MenuMeters now has one home, one download, signed updates, and a maintainer who has signed up for the job.</p>
-      <p class="signature"><a href="https://github.com/lgibelli">Luca Gibelli</a><br>Maintainer</p>
+      <p class="signature"><strong>NERv</strong><br>Maintainer</p>
     </div>
   </div>
 </section>
@@ -274,7 +274,7 @@
     <div>
       <h2 id="trust-title">What’s in the box, and what isn’t</h2>
       <ul class="facts">
-        <li><strong>Signed and notarized.</strong> Every release is signed with the Developer ID of Stardata s.r.l. (team T4552AW4A5), runs with the hardened runtime, and is notarized by Apple.</li>
+        <li><strong>Signed and notarized.</strong> Every release is signed with the same Apple Developer ID (team T4552AW4A5), runs with the hardened runtime, and is notarized by Apple.</li>
         <li><strong>Signed updates.</strong> MenuMeters checks for updates once a day, using <a href="https://sparkle-project.org">Sparkle</a>, and asks before installing. It accepts an update only if the download is signed with the project’s update key and the app inside is signed by the same developer team.</li>
         <li><strong>Nothing about you leaves your Mac.</strong> The daily check downloads a small feed from salamacchine.it and sends only the app’s version, as <code>MenuMeters/3.1.0 Sparkle/2.10.1</code>. You can turn the check off in the About tab.</li>
         <li><strong>Open to inspection.</strong> All of the source is on GitHub, and the release build needs nothing but Apple’s Command Line Tools.</li>
@@ -364,7 +364,7 @@ spctl --assess --verbose \
 
 <footer class="footer">
   <div class="wrap footer-grid">
-    <p>MenuMeters is free software, released under the <a href="https://github.com/menumeters-osx/MenuMeters/blob/main/LICENSE">GNU General Public License, version 2</a>. Maintained by <a href="https://github.com/lgibelli">Luca Gibelli</a>.</p>
+    <p>MenuMeters is free software, released under the <a href="https://github.com/menumeters-osx/MenuMeters/blob/main/LICENSE">GNU General Public License, version 2</a>. Maintained by NERv.</p>
     <p>Not affiliated with Apple. macOS is a trademark of Apple Inc.</p>
     <nav class="footer-links" aria-label="Project">
       <a href="https://github.com/menumeters-osx/MenuMeters">Source</a>
