@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MenuMeters for macOS: CPU, memory, disk and network meters in the menu bar</title>
-<meta name="description" content="MenuMeters puts CPU, memory, disk and network meters in the macOS menu bar. Free and open source since 2002, rewritten in Swift, signed and notarized, and maintained.">
+<meta name="description" content="CPU, memory, disk and network meters for the macOS menu bar, on macOS 26 Tahoe and macOS 27 Golden Gate. Free and open source since 2002, signed, notarized and maintained.">
 <link rel="canonical" href="https://menumeters-osx.github.io/">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
@@ -25,7 +25,7 @@
   "@type": "SoftwareApplication",
   "name": "MenuMeters",
   "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "macOS 26 or later",
+  "operatingSystem": "macOS 26 Tahoe, macOS 27 Golden Gate",
   "softwareVersion": "3.1.0",
   "downloadUrl": "https://github.com/menumeters-osx/MenuMeters/releases/latest/download/MenuMeters-latest.dmg",
   "license": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
@@ -72,7 +72,7 @@
       <a class="button" href="https://github.com/menumeters-osx/MenuMeters/releases/latest/download/MenuMeters-latest.dmg">Download MenuMeters 3.1.0</a>
       <a class="button button-quiet" href="https://github.com/menumeters-osx/MenuMeters">Source on GitHub</a>
     </div>
-    <p class="fineprint">Free. For macOS 26 Tahoe and later, on Apple silicon and Intel Macs. A 2.7&nbsp;MB disk image, signed with a Developer ID and notarized by Apple. Using an older macOS? <a href="#older-macos">Here’s what to get.</a></p>
+    <p class="fineprint">Free. For macOS 26 Tahoe and later, including macOS 27 Golden Gate, on Apple silicon and Intel Macs. A 2.7&nbsp;MB disk image, signed with a Developer ID and notarized by Apple. Using an older macOS? <a href="#compatibility">Here’s what to get.</a></p>
   </div>
 
   <figure class="loupe">
@@ -270,26 +270,12 @@
 </section>
 
 <section class="section trust" id="trust" aria-labelledby="trust-title">
-  <div class="wrap trust-grid">
-    <div>
-      <h2 id="trust-title">What’s in the box, and what isn’t</h2>
-      <ul class="facts">
-        <li><strong>Signed and notarized.</strong> Every release is signed with the same Apple Developer ID (team T4552AW4A5), runs with the hardened runtime, and is notarized by Apple.</li>
-        <li><strong>Signed updates.</strong> MenuMeters checks for updates once a day, using <a href="https://sparkle-project.org">Sparkle</a>, and asks before installing. It accepts an update only if the download is signed with the project’s update key and the app inside is signed by the same developer team.</li>
-        <li><strong>Nothing about you leaves your Mac.</strong> The daily check downloads a small feed from salamacchine.it and sends only the app’s version, as <code>MenuMeters/3.1.0 Sparkle/2.10.1</code>. You can turn the check off in the About tab.</li>
-        <li><strong>Open to inspection.</strong> All of the source is on GitHub, and the release build needs nothing but Apple’s Command Line Tools.</li>
-      </ul>
-    </div>
-    <div class="verify">
-      <h3>Check it yourself</h3>
-      <p>After installing, these commands show the signature and Apple’s notarization:</p>
-<pre><code>codesign --verify --deep --strict \
-    /Applications/MenuMeters.app
-spctl --assess --verbose \
-    /Applications/MenuMeters.app</code></pre>
-      <p>The first prints nothing when the signature is intact. The second should end with <code>source=Notarized Developer ID</code>. The SHA-256 of the 3.1.0 disk image is:</p>
-      <p class="hash"><code>12144f6dde627c84e48e841b1d74484a302064706895bb1fcee9b3d6396de63c</code></p>
-    </div>
+  <div class="wrap">
+    <h2 id="trust-title">Signed, from download to update</h2>
+    <ul class="facts">
+      <li><strong>Signed and notarized.</strong> Every release is signed with the same Apple Developer ID (team T4552AW4A5), runs with the hardened runtime, and is notarized by Apple.</li>
+      <li><strong>Signed updates.</strong> MenuMeters checks for updates once a day, using <a href="https://sparkle-project.org">Sparkle</a>, and asks before installing. It accepts an update only if the download is signed with the project’s update key and the app inside is signed by the same developer team.</li>
+    </ul>
   </div>
 </section>
 
@@ -306,9 +292,20 @@ spctl --assess --verbose \
     <div class="install-notes">
       <h3>Coming from an older MenuMeters?</h3>
       <p>Your settings are copied over the first time 3.1.0 starts. Then delete the old copy: it has a different bundle identifier, so macOS treats it as a separate app with its own login item.</p>
-      <h3 id="older-macos">On macOS 15 or earlier</h3>
-      <p>This version needs macOS 26 Tahoe or later. For older systems, Yuji Tachikawa’s <a href="https://github.com/yujitach/MenuMeters/releases">2.1 releases</a> still work.</p>
     </div>
+  </div>
+  <div class="wrap compat">
+    <h3 id="compatibility">Which MenuMeters for your macOS</h3>
+    <table class="compat-table">
+      <thead><tr><th scope="col">Your macOS</th><th scope="col">Get</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">macOS&nbsp;27&nbsp;Golden&nbsp;Gate</th><td><a href="https://github.com/menumeters-osx/MenuMeters/releases/latest/download/MenuMeters-latest.dmg">MenuMeters 3.1</a>, from this site. Apple silicon.</td></tr>
+        <tr><th scope="row">macOS&nbsp;26&nbsp;Tahoe</th><td><a href="https://github.com/menumeters-osx/MenuMeters/releases/latest/download/MenuMeters-latest.dmg">MenuMeters 3.1</a>, from this site. Apple silicon and Intel.</td></tr>
+        <tr><th scope="row">macOS&nbsp;15&nbsp;Sequoia, macOS&nbsp;14&nbsp;Sonoma, macOS&nbsp;13&nbsp;Ventura, macOS&nbsp;12&nbsp;Monterey</th><td>Yuji Tachikawa’s <a href="https://github.com/yujitach/MenuMeters/releases/tag/2.1.7">MenuMeters 2.1.7</a>.</td></tr>
+        <tr><th scope="row">macOS&nbsp;11&nbsp;Big&nbsp;Sur, macOS&nbsp;10.15&nbsp;Catalina, macOS&nbsp;10.14&nbsp;Mojave, macOS&nbsp;10.13&nbsp;High&nbsp;Sierra, macOS&nbsp;10.12&nbsp;Sierra, OS&nbsp;X&nbsp;10.11&nbsp;El&nbsp;Capitan</th><td>The older build on <a href="https://member.ipmu.jp/yuji.tachikawa/MenuMetersElCapitan/">Yuji Tachikawa’s download page</a>: an app on Catalina and Big Sur, a System Preferences pane up to Mojave.</td></tr>
+        <tr><th scope="row">OS&nbsp;X&nbsp;10.10&nbsp;Yosemite&nbsp;and&nbsp;earlier</th><td>Alex Harper’s original, from <a href="https://www.ragingmenace.com/software/menumeters/">Raging Menace</a>.</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -322,7 +319,7 @@ spctl --assess --verbose \
       </details>
       <details>
         <summary>Why does it need macOS 26?</summary>
-        <p>The Swift rewrite is built on current AppKit and tested on macOS 26 Tahoe and macOS 27. Keeping it focused on current systems is what makes the one-week promise possible. Older Macs can keep using the 2.1 releases.</p>
+        <p>The Swift rewrite is built on current AppKit and tested on macOS 26 Tahoe and macOS 27 Golden Gate. Keeping it focused on current systems is what makes the one-week promise possible. Older Macs can keep using an earlier version: <a href="#compatibility">the table under Install</a> shows which.</p>
       </details>
       <details>
         <summary>Why does it ask for Accessibility access?</summary>

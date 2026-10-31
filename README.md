@@ -15,9 +15,8 @@ step: edit the files and push.
 
 ## For each release
 
-- Update the version in `index.html`: the download button, the
-  `softwareVersion` in the JSON-LD block, the User-Agent example, and the
-  SHA-256 of the disk image.
+- Update the version in `index.html`: the download button and the
+  `softwareVersion` in the JSON-LD block.
 - The download button links to
   `releases/latest/download/MenuMeters-latest.dmg`, so attach that file to
   every GitHub release alongside the versioned one.
