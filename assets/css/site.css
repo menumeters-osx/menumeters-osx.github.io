@@ -689,6 +689,14 @@ pre code { font-size: inherit; }
   font-size: 15px;
   color: var(--ink-3);
 }
+.contributors a:not([href^="https://sparkle"]) { color: inherit; text-decoration-color: var(--rule); }
+.contributors a:hover { color: var(--ink); text-decoration-color: currentColor; }
+
+/* Names in headings link to their profiles without turning blue. */
+.timeline h3 a,
+.credits-grid strong a { color: inherit; text-decoration-color: var(--rule); }
+.timeline h3 a:hover,
+.credits-grid strong a:hover { text-decoration-color: currentColor; }
 
 /* Footer */
 
